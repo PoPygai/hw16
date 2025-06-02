@@ -5,6 +5,7 @@ import {Book} from "../model/Book.js";
 import {bookDtoSchema, bookIdSchema, readerSchema} from "../utils/joiSchemas.js";
 import {BookDto} from "../model/BookDto.js";
 import {getGenre} from "../utils/tools.js";
+import {ReaderDto} from "../model/ReaderDto.js";
 
 export const booksRouter = express.Router();
 
@@ -39,7 +40,7 @@ booksRouter.put('/pickup', asyncHandler(async (req, res) => {
     error = readerSchema.validate(reader).error;
     if (error) throw new Error(JSON.stringify({status: 400, message: error.message}));
 
-    await controller.pickUpBook(id as string,);
+    await controller.pickUpBook(id as string,reader as string);
     res.send('Book picked up')
 }));
 
@@ -69,4 +70,12 @@ booksRouter.get('/book', asyncHandler(async (req, res) => {
     const {id} = req.query;
     const result: Book = await controller.getBookById(id as string);
     res.type("application/json").json(result)
+}))
+
+booksRouter.get('/reader-by-title-book', asyncHandler(async (req, res) => {
+    const {title} = req.query;
+    if(!title) throw new Error(JSON.stringify({status: 400, message: "Unknown title"}));
+    const result = await controller.getReaderWithBookOnHand(title as string);
+    res.type("application/json").json(result)
+
 }))

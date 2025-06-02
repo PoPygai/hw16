@@ -7,6 +7,7 @@ export const errorHandler = (err:Error, req:Request, res:Response, next:NextFunc
         const error:LibError = JSON.parse(err.message)
         res.status(error.status).end(error.message)
     } catch (e) {
+        console.log(err)
         res.status(500).end(`Unknown server error : ${err.message}`)
     }
 }

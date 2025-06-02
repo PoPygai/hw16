@@ -9,7 +9,7 @@ export const bookDtoSchema:ObjectSchema<BookDto> = Joi.object({
     quantity: Joi.number().positive().max(100)
 })
 
-export const bookIdSchema = Joi.string().length(26).required()
+export const bookIdSchema = Joi.string().length(36).required()
 
 export const readerSchema = Joi.string().required();
 

@@ -8,7 +8,7 @@ const BookMongoSchema = new mongoose.Schema({
     author: {type: String, required: true},
     genre: {type: String, enum: BookGenres, required: true},
     status: {type: String, enum: BookStatus, required: true},
-    pickList: {type:[{reader:{type:String}, give_date:{type:String},return_data:{type:String}}]}
+    pickList: {type:[{reader:{type:String}, give_date:{type:String},return_date:{type:String}}],_id: false}
 })
 
 export const BookModel=

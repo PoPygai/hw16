@@ -12,5 +12,13 @@ const book = {
 }
 
 const index = book.pickList.findIndex(item => item.reader === "Albert2");
-book.pickList[index] = {...book.pickList[index],return_date:"2/2/2222"}
+book.pickList[index].return_date = "2/2/2222";
 console.log(book.pickList)
+
+
+console.log(-1!==-1)
+
+let t = {
+    id:1,f:2
+}
+console.log(t)

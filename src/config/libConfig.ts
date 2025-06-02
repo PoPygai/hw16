@@ -38,7 +38,7 @@ export const pathsRoles:Record<string, Role[]> = {
     'GET/api/books/book':[Role.USER],
     'GET/api/books/genre':[Role.USER],
     'GET/api/books/genre/status':[Role.USER],
-
+    'GET/api/books/reader-by-title-book':[Role.LIBRARIAN,Role.ADMIN],
 
 
 }

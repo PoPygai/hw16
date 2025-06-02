@@ -15,6 +15,7 @@ async function basicAuth(header: string, req: AuthRequest, service: AccountServi
         try {
         const account = await service.getAccount(username);
         if(bcrypt.compareSync(password,account.passHash)){
+
             req.username = username;
             req.roles = account.roles;
             console.log("reader authenticated")
@@ -40,6 +41,7 @@ export const skipRoutes = (skipRoutes:string[]) =>
     const pathMethod = req.method + req.path;
         console.log(pathMethod)
     if(!skipRoutes.includes(pathMethod) && !req.username)
-        throw new Error(JSON.stringify({status:401, message:""}))
+        throw new Error(JSON.stringify({status:401, message:"1"}))
+
     else next();
 }

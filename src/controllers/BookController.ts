@@ -29,8 +29,8 @@ export class BookController {
         return convertBookToBookDto(book);
     }
 
-    async pickUpBook(id: string) {
-        await this.libService.pickUpBook(id)
+    async pickUpBook(id: string,reader:string) {
+        await this.libService.pickUpBook(id,reader)
     }
 
     async returnBook(id: string, reader: string) {
@@ -51,5 +51,10 @@ export class BookController {
 
     async getBookById(id: string) {
         return await this.libService.getBookById(id);
+    }
+
+    async getReaderWithBookOnHand(title: string) {
+        const res = await this.libService.getReaderWithBookOnHand(title)
+        return res;
     }
 }
