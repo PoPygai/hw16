@@ -42,6 +42,5 @@ export const skipRoutes = (skipRoutes:string[]) =>
         console.log(pathMethod)
     if(!skipRoutes.includes(pathMethod) && !req.username)
         throw new Error(JSON.stringify({status:401, message:"1"}))
-
     else next();
 }

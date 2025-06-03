@@ -9,5 +9,5 @@ export const authorize = (arr:Record<string, Role[]>) =>
     // if(!roles || arr[pathMethod].includes(roles)) //ToDo incorrect request for registration with user
     if(!roles || roles.some(item => arr[pathMethod].includes(item))) //ToDo incorrect request for registration with user
         next();
-    else throw new Error(JSON.stringify({status: 403, message:""}))
+    else throw new Error(JSON.stringify({status: 403, message:"2"}))
     }

@@ -10,6 +10,8 @@ import dotenv from 'dotenv';
 import {accountRouter} from "./rauters/accountRouter.js";
 import {authenticate, skipRoutes} from "./middleware/authentication.js";
 import {authorize} from "./middleware/authorization.js";
+import {rateLimitMiddleware} from "./middleware/counterRequest.js";
+import {Limits_Requests} from "./utils/libTypes.js";
 
 export const launchServer = () => {
     //================load environments==================
@@ -26,6 +28,7 @@ export const launchServer = () => {
     app.use(authenticate(accService));
     app.use(skipRoutes(skipPaths));
     app.use(authorize(pathsRoles));
+    app.use(rateLimitMiddleware(Limits_Requests))
     app.use(express.json());
     app.use(morgan('dev'));
     app.use(morgan('combined', {stream: logStream}));
