@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "58bdedba-2ff6-4497-9a6c-219f948ff978",
+		"_postman_id": "3539e897-c547-4737-a4e9-8cd70a16b1c6",
 		"name": "Library",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18222058",
-		"_collection_link": "https://www.postman.com/warped-trinity-518501/workspace/java-29/collection/18222058-58bdedba-2ff6-4497-9a6c-219f948ff978?action=share&source=collection_link&creator=18222058"
+		"_exporter_id": "43830216",
+		"_collection_link": "https://www.postman.com/mrdava/workspace/first-api/collection/43830216-3539e897-c547-4737-a4e9-8cd70a16b1c6?action=share&source=collection_link&creator=43830216"
 	},
 	"item": [
 		{
@@ -20,18 +20,22 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userName\":\"Draconus\",\r\n    \"password\":\"12134578\",\r\n    \"email\":\"dracon@gmail.com\",\r\n    \"birthdate\":\"2020/01/01\"\r\n}"
+							"raw": "{\r\n    \"userName\":\"David\",\r\n    \"password\":\"12345789\",\r\n    \"email\":\"dracon@gmail.com\",\r\n    \"birthdate\":\"2020/01/01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "http://localhost:3555/accounts/account",
+							"raw": "http://localhost:3555/accounts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3555",
 							"path": [
-								"accounts",
-								"account"
+								"accounts"
 							]
 						}
 					},
@@ -41,12 +45,24 @@
 					"name": "getReaderAccountByName",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "12345789",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "David",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3555/accounts/account/Draconus",
+							"raw": "http://localhost:3555/accounts/account/David",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -55,7 +71,7 @@
 							"path": [
 								"accounts",
 								"account",
-								"Draconus"
+								"David"
 							]
 						}
 					},
@@ -115,6 +131,56 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "changeRoles",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "konspirin",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456789.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"user\", \"librarian\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3555/accounts/roles?userName=David",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3555",
+							"path": [
+								"accounts",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "David"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -145,13 +211,25 @@
 			"name": "addBook",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "David",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "12345789",
+							"type": "string"
+						}
+					]
 				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"author\":\"Lev Tolstoy\",\r\n    \"title\":\"Anna Karenina\",\r\n    \"genre\":\"classic\"\r\n}",
+					"raw": "{\r\n    \"author\":\"Lev Her\",\r\n    \"title\":\"Anna Karenina\",\r\n    \"genre\":\"classic\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -159,12 +237,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3500/api/books",
+					"raw": "http://localhost:3555/api/books",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3500",
+					"port": "3555",
 					"path": [
 						"api",
 						"books"
@@ -214,21 +292,38 @@
 			"name": "pickUpBook",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345789",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "David",
+							"type": "string"
+						}
+					]
 				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"author\":\"Lev Tolstoy\",\r\n    \"title\":\"Anna Karenina\",\r\n    \"genre\":\"classic\"\r\n}"
+					"raw": "{\r\n    \"reader\": \"Petya123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "http://localhost:3500/api/books/pickup?id=bb27dd32-7cd3-4a31-acae-3b06bc844a4f",
+					"raw": "http://localhost:3555/api/books/pickup?id=9f784c01-6e88-4dcc-9dfb-b0a66e8c3ad8",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3500",
+					"port": "3555",
 					"path": [
 						"api",
 						"books",
@@ -237,7 +332,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "bb27dd32-7cd3-4a31-acae-3b06bc844a4f"
+							"value": "9f784c01-6e88-4dcc-9dfb-b0a66e8c3ad8"
 						}
 					]
 				}
@@ -247,6 +342,21 @@
 		{
 			"name": "returnBook",
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345789",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "David",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -259,12 +369,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3500/api/books/return?id=925dd685-d655-41ff-8848-649fc5ce2f1b",
+					"raw": "http://localhost:3555/api/books/return?id=63259b63-4bdd-46d5-b0b0-03ace962c052",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3500",
+					"port": "3555",
 					"path": [
 						"api",
 						"books",
@@ -273,7 +383,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "925dd685-d655-41ff-8848-649fc5ce2f1b"
+							"value": "63259b63-4bdd-46d5-b0b0-03ace962c052"
 						}
 					]
 				}
@@ -394,6 +504,48 @@
 						{
 							"key": "id",
 							"value": "ghjtf"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getReaderBytitleOfBook",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12345789",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "David",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3555/api/books/reader-by-title-book?title=Anna Karenina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3555",
+					"path": [
+						"api",
+						"books",
+						"reader-by-title-book"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Anna Karenina"
 						}
 					]
 				}
