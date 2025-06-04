@@ -26,18 +26,18 @@ export const skipPaths = [
 ]
 
 export const pathsRoles:Record<string, Role[]> = {
-    'PUT/accounts' : [Role.USER, Role.ADMIN],
-    'GET/accounts/account':[Role.USER, Role.ADMIN],
-    'DELETE/accounts/account':[Role.ROOT_ADMIN],
-    'PUT/accounts/roles':[Role.ROOT_ADMIN],
+    'PUT/accounts' : [Role.USER, Role.ADMIN,Role.PREMIUM_USER],
+    'GET/accounts/account':[Role.USER, Role.ADMIN,Role.PREMIUM_USER],
+    'DELETE/accounts/account':[Role.ROOT_ADMIN,Role.PREMIUM_USER],
+    'PUT/accounts/roles':[Role.ROOT_ADMIN,Role.PREMIUM_USER],
     //==========================================================
     'POST/api/books':[Role.LIBRARIAN,Role.ADMIN],
     'DELETE/api/books/remove':[Role.LIBRARIAN,Role.ADMIN],
     'PUT/api/books/pickup':[Role.LIBRARIAN],
     'PUT/api/books/return':[Role.LIBRARIAN],
-    'GET/api/books/book':[Role.USER],
-    'GET/api/books/genre':[Role.USER],
-    'GET/api/books/genre/status':[Role.USER],
+    'GET/api/books/book':[Role.USER,Role.PREMIUM_USER],
+    'GET/api/books/genre':[Role.USER,Role.PREMIUM_USER],
+    'GET/api/books/genre/status':[Role.USER,Role.PREMIUM_USER],
     'GET/api/books/reader-by-title-book':[Role.LIBRARIAN,Role.ADMIN],
 
 
